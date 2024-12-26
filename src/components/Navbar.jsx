@@ -22,7 +22,7 @@ function Navbar({setQuery,results}) {
         </div>
 
         <div>
-          <p className="text-md font-medium text-white">{`Found ${results} movies `}</p>
+          <p className="text-md font-medium text-white">{`Found ${results || 0} movies `}</p>
         </div>
       </header>
     </div>
