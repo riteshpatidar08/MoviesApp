@@ -10,10 +10,10 @@ function Movies({ query, setResults }) {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
 
-  const handlePageChange = (p) => {
-console.log(p)
+  const handlePageChange = (event,value) => {
+setCurrentPage(value)
   };
 
   const fetchData = useCallback(
@@ -22,7 +22,7 @@ console.log(p)
       setLoading(true);
       try {
         const data = await axios.get(
-          `http://www.omdbapi.com/?apikey=23d3974b&s=${query}&page={currentPage}`
+          `http://www.omdbapi.com/?apikey=23d3974b&s=${query}&page=${currentPage}`
         );
         setMovies(data.data.Search);
         setTotalPages(Math.ceil(data.data.totalResults / 10));
@@ -65,7 +65,7 @@ console.log(p)
       <Pagination
         count={totalPages}
         page={currentPage}
-        onChange={(p)=>handlePageChange(p)}
+        onChange={handlePageChange}
         variant="outlined"
         shape="rounded"
       />

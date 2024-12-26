@@ -6,7 +6,6 @@ import Modal from '@mui/material/Modal';
 import axios from 'axios';
 
 function Card({ movie }) {
-
   const style = {
     position: 'absolute',
     top: '50%',
@@ -19,16 +18,16 @@ function Card({ movie }) {
     p: 4,
   };
 
-  console.log(movie.imdbID)
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  useEffect(()=>{
-    axios.get(`http://www.omdbapi.com/?apikey=23d3974b&i=${movie.imdbID}`).then((res)=>console.log(res.data))
-  },[])
+  useEffect(() => {
+    axios
+      .get(`http://www.omdbapi.com/?apikey=23d3974b&i=${movie.imdbID}`)
+      .then((res) => console.log(res.data));
+  }, []);
 
-  console.log(movie);
   return (
     <div className="drop-shadow-lg  rounded-md w-96 p-4 mx-4 my-10 grid gap-3 grid-cols-2">
       <div>
