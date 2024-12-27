@@ -12,8 +12,8 @@ function Movies({ query, setResults }) {
   const [totalPages, setTotalPages] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const handlePageChange = (event,value) => {
-setCurrentPage(value)
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
   };
 
   const fetchData = useCallback(
@@ -66,8 +66,9 @@ setCurrentPage(value)
         count={totalPages}
         page={currentPage}
         onChange={handlePageChange}
-        variant="outlined"
+        variant="solid"
         shape="rounded"
+       
       />
     </div>
   );

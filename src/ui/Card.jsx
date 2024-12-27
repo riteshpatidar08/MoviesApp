@@ -19,14 +19,16 @@ function Card({ movie }) {
   };
 
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
-
-  useEffect(() => {
+  const [singleMovieDetail, setSingleMovieDetail] = React.useState([]);
+  const handleOpen = () => {
+    setOpen(true);
     axios
       .get(`http://www.omdbapi.com/?apikey=23d3974b&i=${movie.imdbID}`)
-      .then((res) => console.log(res.data));
-  }, []);
+      .then((res) => setSingleMovieDetail(res.data));
+  };
+  console.log(singleMovieDetail);
+
+  const handleClose = () => setOpen(false);
 
   return (
     <div className="drop-shadow-lg  rounded-md w-96 p-4 mx-4 my-10 grid gap-3 grid-cols-2">
@@ -53,7 +55,7 @@ function Card({ movie }) {
       >
         <Box sx={style}>
           <Typography id="modal-modal-title" variant="h6" component="h2">
-            Text in a modal
+            {singleMovieDetail.Title}
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: 2 }}>
             Duis mollis, est non commodo luctus, nisi erat porttitor ligula.

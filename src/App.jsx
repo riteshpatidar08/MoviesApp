@@ -10,7 +10,7 @@ export default function App() {
 
   return (
     <div>
-      
+     
       <Navbar results={results} setQuery={setQuery} />
       <Movies setResults={setResults} query={query} />
     </div>
