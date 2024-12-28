@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-
-function Navbar({setQuery,results}) {
+import { useDispatch } from 'react-redux';
+function Navbar({results}) {
+  const dispatch = useDispatch()
   console.log(results)
   const handleChange = (e) => {
-    setQuery(e.target.value);
+   dispatch({type :'UPDATE_QUERY' , payload : e.target.value})
   };
 
   return (

@@ -4,9 +4,12 @@ import { CircularProgress } from '@mui/material';
 import { debounce } from 'lodash';
 import Card from '../ui/Card';
 import { Pagination } from '@mui/material';
+import { useSelector } from 'react-redux';
+function Movies({ setResults }) {
+  
+ const query = useSelector((state)=>state.query)
+ console.log(query)
 
-function Movies({ query, setResults }) {
-  console.log(query);
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [totalPages, setTotalPages] = useState(0);
