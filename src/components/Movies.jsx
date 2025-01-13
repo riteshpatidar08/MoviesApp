@@ -25,7 +25,7 @@ function Movies({ setResults }) {
       setLoading(true);
       try {
         const data = await axios.get(
-          `http://www.omdbapi.com/?apikey=23d3974b&s=${query}&page=${currentPage}`
+          `https://www.omdbapi.com/?apikey=23d3974b&s=${query}&page=${currentPage}`
         );
         setMovies(data.data.Search);
         setTotalPages(Math.ceil(data.data.totalResults / 10));
